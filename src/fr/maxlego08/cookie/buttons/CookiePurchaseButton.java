@@ -32,7 +32,8 @@ public class CookiePurchaseButton extends AbstractCookieButton {
             super.onClick(player, event, inventory, slot, placeholders);
             cookiePlayer.remove(price);
             cookiePlayer.add(this.cookieUpgrade, 1);
-            this.plugin.getInventoryManager().updateInventory(player);
+            inventory.displayButton(this);
+//            this.plugin.getInventoryManager().updateInventory(player);
 
             this.plugin.getStorageManager().upsertUpgrade(player.getUniqueId(), this.cookieUpgrade, cookiePlayer.getUpgrades().get(this.cookieUpgrade));
         }
