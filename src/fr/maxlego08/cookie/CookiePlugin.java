@@ -10,6 +10,7 @@ import fr.maxlego08.cookie.save.Config;
 import fr.maxlego08.cookie.save.MessageLoader;
 import fr.maxlego08.cookie.storage.StorageManager;
 import fr.maxlego08.cookie.zcore.ZPlugin;
+import fr.maxlego08.cookie.zcore.logger.Logger;
 import fr.maxlego08.menu.api.ButtonManager;
 import fr.maxlego08.menu.api.InventoryManager;
 import fr.maxlego08.menu.api.loader.NoneLoader;
@@ -67,6 +68,10 @@ public class CookiePlugin extends ZPlugin {
     public void onDisable() {
 
         this.preDisable();
+
+        Logger.info("Saving players data...");
+        this.storageManager.saveAll();
+        Logger.info("Players data saved.", Logger.LogType.SUCCESS);
 
         this.saveFiles();
 

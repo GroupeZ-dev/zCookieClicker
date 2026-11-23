@@ -7,13 +7,7 @@ import fr.maxlego08.cookie.dto.CookiePlayerDTO;
 import fr.maxlego08.cookie.dto.CookieUpgradeDTO;
 import fr.maxlego08.cookie.migrations.CookiePlayerMigration;
 import fr.maxlego08.cookie.migrations.CookieUpgradeMigration;
-import fr.maxlego08.sarah.DatabaseConfiguration;
-import fr.maxlego08.sarah.DatabaseConnection;
-import fr.maxlego08.sarah.HikariDatabaseConnection;
-import fr.maxlego08.sarah.MigrationManager;
-import fr.maxlego08.sarah.MySqlConnection;
-import fr.maxlego08.sarah.RequestHelper;
-import fr.maxlego08.sarah.SqliteConnection;
+import fr.maxlego08.sarah.*;
 import fr.maxlego08.sarah.database.DatabaseType;
 import fr.maxlego08.sarah.logger.JULogger;
 import org.bukkit.Bukkit;
@@ -138,5 +132,11 @@ public class StorageManager implements Listener {
 
     public List<CookiePlayerDTO> selectRankingTotal() {
         return this.requestHelper.select("%prefix%players", CookiePlayerDTO.class, table -> table.orderByDesc("total_cookie"));
+    }
+
+    public void saveAll(){
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            this.removePlayer(player);
+        }
     }
 }

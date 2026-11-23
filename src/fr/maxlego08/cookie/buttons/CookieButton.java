@@ -41,7 +41,7 @@ public class CookieButton extends Button {
         if (event.getClick().isLeftClick() || event.getClick().isRightClick()) {
             super.onClick(player, event, inventory, slot, placeholders);
 
-            this.plugin.getCookieManager().addCookie(player, BigDecimal.ONE);
+            this.plugin.getCookieManager().addCookie(player, BigDecimal.ONE,false);
         }
     }
 }
